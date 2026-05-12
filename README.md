@@ -1,30 +1,53 @@
 # dns-thing
 
-Coisa pequena para cutucar DNS.
+Um lab pequeno em Java para consultar DNS pelo terminal.
 
-Serve para consultar um dominio, ver A/AAAA/CNAME e comparar resolvedores quando `dig` estiver instalado. Quando nao tiver `dig`, ele cai para a resolucao normal do Python.
+A ideia aqui e treinar Java basico/intermediario com uma coisa real: passar um dominio, tentar resolver os IPs e tratar erro sem jogar tudo em framework.
+
+## o que tem
+
+- Java puro
+- `main` simples
+- argumentos pelo terminal
+- `InetAddress` para resolver dominio
+- `try/catch` para erro de DNS
+- saida em texto ou JSON
 
 ## uso
 
-```bash
-python dns_thing.py github.com
-```
-
-Comparando resolvedores:
+Compilar:
 
 ```bash
-python dns_thing.py github.com --resolver 1.1.1.1 --resolver 8.8.8.8
+javac src/main/java/DnsThing.java
 ```
 
-Mudando tipo:
+Rodar:
 
 ```bash
-python dns_thing.py github.com --type A --type AAAA
+java -cp src/main/java DnsThing github.com
 ```
 
-## notas
+Saida em JSON:
 
-- sem dependencia externa
-- `dig` e opcional
-- ainda e mais lab do que ferramenta
+```bash
+java -cp src/main/java DnsThing github.com --json
+```
 
+## por que Java aqui
+
+Eu nao quis usar Spring nem biblioteca externa porque a ideia e entender o basico primeiro.
+
+O foco foi:
+
+- ler argumentos
+- separar metodos pequenos
+- usar classe simples para guardar resultado
+- entender excecao quando o dominio nao resolve
+- imprimir uma resposta que da para ler no terminal
+
+## limites
+
+- nao compara resolvedores ainda
+- nao separa A/AAAA manualmente, so mostra os IPs retornados pelo sistema
+- nao e clone do `dig`
+- e mais estudo do que ferramenta pronta

@@ -1,5 +1,5 @@
+*.class
+out/
 __pycache__/
-*.pyc
 *.json
 *.log
-
