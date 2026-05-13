@@ -51,3 +51,14 @@ O foco foi:
 - nao separa A/AAAA manualmente, so mostra os IPs retornados pelo sistema
 - nao e clone do `dig`
 - e mais estudo do que ferramenta pronta
+
+## coisas para melhorar depois
+
+- validar melhor dominio e argumentos
+- separar o codigo em package quando o projeto crescer
+- adicionar testes pequenos para JSON e erro de DNS
+- comparar resultado entre resolvedor do sistema e um resolvedor publico
+
+## anotacoes de aprendizado
+
+Esse projeto ficou propositalmente sem Maven/Gradle para eu praticar Java direto pelo terminal. Se ele crescer, faz sentido colocar build tool e testes, mas por enquanto a simplicidade ajuda a enxergar o basico.
