@@ -1,27 +1,26 @@
 # dns-thing
 
-Um lab pequeno em Java para consultar DNS pelo terminal.
+Esse repo nasceu para treinar Java com uma coisa pequena e real: resolver DNS pelo terminal.
 
-A ideia aqui e treinar Java basico/intermediario com uma coisa real: passar um dominio, tentar resolver os IPs e tratar erro sem jogar tudo em framework.
+Eu nao quis colocar Spring, Maven ou biblioteca externa aqui. A ideia era fazer no basico mesmo: receber um dominio, tentar resolver, tratar erro e imprimir uma resposta que de para usar.
 
-## o que tem
+## o que tem aqui
 
 - Java puro
 - `main` simples
-- argumentos pelo terminal
-- `InetAddress` para resolver dominio
-- `try/catch` para erro de DNS
-- saida em texto ou JSON
+- leitura de argumentos pelo terminal
+- resolucao de DNS com `InetAddress`
+- tratamento quando o dominio nao resolve
+- saida em texto
+- saida em JSON com `--json`
 
-## uso
-
-Compilar:
+## compilando
 
 ```bash
 javac src/main/java/DnsThing.java
 ```
 
-Rodar:
+## rodando
 
 ```bash
 java -cp src/main/java DnsThing github.com
@@ -33,32 +32,31 @@ Saida em JSON:
 java -cp src/main/java DnsThing github.com --json
 ```
 
-## por que Java aqui
+Ajuda:
 
-Eu nao quis usar Spring nem biblioteca externa porque a ideia e entender o basico primeiro.
+```bash
+java -cp src/main/java DnsThing --help
+```
 
-O foco foi:
+## o que eu treinei
 
-- ler argumentos
-- separar metodos pequenos
-- usar classe simples para guardar resultado
-- entender excecao quando o dominio nao resolve
-- imprimir uma resposta que da para ler no terminal
+- estrutura basica de um programa Java
+- separacao em metodos pequenos
+- classe simples para guardar resultado
+- uso de `InetAddress.getAllByName`
+- `try/catch` para erro de DNS
+- geracao manual de JSON pequeno
 
-## limites
-
-- nao compara resolvedores ainda
-- nao separa A/AAAA manualmente, so mostra os IPs retornados pelo sistema
-- nao e clone do `dig`
-- e mais estudo do que ferramenta pronta
-
-## coisas para melhorar depois
+## o que falta
 
 - validar melhor dominio e argumentos
 - separar o codigo em package quando o projeto crescer
 - adicionar testes pequenos para JSON e erro de DNS
 - comparar resultado entre resolvedor do sistema e um resolvedor publico
+- separar consulta A e AAAA manualmente
+- adicionar timeout configuravel
+- salvar resultado em arquivo
 
-## anotacoes de aprendizado
+## nota
 
-Esse projeto ficou propositalmente sem Maven/Gradle para eu praticar Java direto pelo terminal. Se ele crescer, faz sentido colocar build tool e testes, mas por enquanto a simplicidade ajuda a enxergar o basico.
+Nao e um clone do `dig` ou `nslookup`. Ficou propositalmente sem Maven/Gradle para eu praticar Java direto pelo terminal. Se ele crescer, faz sentido colocar build tool e testes.
